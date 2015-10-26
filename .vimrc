@@ -1,0 +1,111 @@
+set nocompatible
+
+set dir=~/.tmp/
+
+" Plugin manager
+" -----------------------
+execute pathogen#infect()
+filetype plugin indent on
+
+" General
+" -----------------------
+set number
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set autoindent
+set hlsearch
+set laststatus=2
+let mapleader = ","
+
+" Window mapings
+" -----------------------
+nnoremap <C-W>" :vsp<CR>
+nnoremap <C-W>: :sp<CR>
+
+" Tab mapings
+" -----------------------
+nnoremap <C-W>c :tabnew<CR>
+nnoremap <C-W>n :tabnext<CR>
+nnoremap <C-W>p :tabprevious<CR>
+nnoremap <C-W>1 1gt
+nnoremap <C-W>2 2gt
+nnoremap <C-W>3 3gt
+nnoremap <C-W>4 4gt
+nnoremap <C-W>5 5gt
+
+" Colors
+" -----------------------
+colorscheme railscasts
+syntax on
+
+" Spelling
+" -----------------------
+autocmd FileType markdown set spell spelllang=en_us
+
+" EasyMotion
+" -----------------------
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_use_smartsign_us = 1
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+let g:EasyMotion_startofline = 0
+
+" Airline
+" -----------------------
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'y', 'warning']]
+
+" Tmuxline
+" -----------------------
+let g:tmuxline_preset = {
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+      \'y'    : ['#(~/bin/battery)', '%R']}
+
+" Git gutter
+" -----------------------
+let g:gitgutter_enabled = 1
+let g:gitgutter_highlight_lines = 0
+let g:gitgutter_realtime = 1
+let g:gitgutter_eager = 1
+
+" Fugitive
+" -----------------------
+set diffopt+=vertical
+
+" Fugitive git bindings
+" -----------------------
+nnoremap <space>ga :Git add %:p<CR><CR>
+nnoremap <space>gs :Gstatus<CR>
+nnoremap <space>gc :Gcommit -v -q<CR>
+nnoremap <space>gt :Gcommit -v -q %:p<CR>
+nnoremap <space>gd :Gdiff<CR>
+nnoremap <space>ge :Gedit<CR>
+nnoremap <space>gr :Gread<CR>
+nnoremap <space>gw :Gwrite<CR><CR>
+nnoremap <space>gl :silent! Glog<CR>:bot copen<CR>
+nnoremap <space>gp :Ggrep<Space>
+nnoremap <space>gm :Gmove<Space>
+nnoremap <space>gb :Git branch<Space>
+nnoremap <space>go :Git checkout<Space>
+nnoremap <space>gps :Dispatch! git push<CR>
+nnoremap <space>gpl :Dispatch! git pull<CR>
+
+" same bindings for merging diffs as in normal mode
+" -----------------------
+xnoremap dp :diffput<cr>
+xnoremap do :diffget<cr>
+
+
+highlight link hspecDescribe Type
+highlight link hspecIt Identifier
+highlight link hspecDescription Comment
