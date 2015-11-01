@@ -13,6 +13,6 @@ def symlink(file, destination_folder)
   FileUtils.ln_s filename, sym_link
 end
 
-[".vim", ".vimrc", ".tmux.conf"].each do |file|
+[".vim", ".vimrc", ".tmux.conf", "battery"].each do |file|
   symlink(file, "~")
 end
