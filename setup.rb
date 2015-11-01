@@ -8,7 +8,7 @@ def symlink(file, destination_folder)
   resolved_destination = File.expand_path(destination_folder)
   sym_link = File.join(resolved_destination, File.basename(filename))
 
-  FileUtils.rm sym_link if File.symlink?(sym_link) || File.exist?(sym_link)
+  FileUtils.rm sym_link if File.symlink?(sym_link)
   FileUtils.ln_s filename, sym_link
 end
 
@@ -23,13 +23,18 @@ def install_vim_plugin(git_repo)
   system('vim -u NONE -c "Helptags" -c q')
 end
 
-FileUtils.mkdir_p File.expand_path("~/.tmp")
+def mkdir(dir)
+  FileUtils.mkdir_p File.expand_path(dir)
+end
+
+mkdir("~/.tmp")
 
 [
+  "bin",
   ".vim",
   ".vimrc",
   ".tmux.conf",
-  "battery",
+  ".bash_profile",
 ].each do |file|
   symlink(file, "~")
 end
