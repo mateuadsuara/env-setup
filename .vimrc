@@ -69,7 +69,7 @@ let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'y', 'warning'
 let g:tmuxline_preset = {
       \'win'  : '#I #W',
       \'cwin' : '#I #W',
-      \'y'    : ['#(~/bin/battery)', '%R']}
+      \'y'    : ['#(~/battery)', '%R']}
 
 " Git gutter
 " -----------------------
