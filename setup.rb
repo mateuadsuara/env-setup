@@ -2,14 +2,13 @@
 
 require 'fileutils'
 
-def symlink(file, destination_folder)
-  filename = File.join(working_dir, file)
+def symlink(relative_file, destination)
+  filepath = File.join(working_dir, relative_file)
 
-  resolved_destination = File.expand_path(destination_folder)
-  sym_link = File.join(resolved_destination, File.basename(filename))
+  sym_link = File.expand_path(destination)
 
-  FileUtils.rm sym_link if File.symlink?(sym_link)
-  FileUtils.ln_s filename, sym_link
+  FileUtils.rm sym_link if File.symlink?(sym_link) || File.exist?(sym_link)
+  FileUtils.ln_s filepath, sym_link
 end
 
 def working_dir
@@ -29,14 +28,11 @@ end
 
 mkdir("~/.tmp")
 
-[
-  "bin",
-  ".vim",
-  ".vimrc",
-  ".tmux.conf",
-  ".bash_profile",
-].each do |file|
-  symlink(file, "~")
+symlink("bin", "~/bin")
+
+Dir.glob("dotfiles/*").each do |file|
+  filename = File.basename(file)
+  symlink(file, "~/.#{filename}")
 end
 
 [
