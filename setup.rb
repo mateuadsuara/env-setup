@@ -51,6 +51,8 @@ end
 
   "airblade/vim-gitgutter.git",
   "tpope/vim-fugitive.git",
+
+  "lambdatoast/elm.vim.git"
 ].each do |plugin|
   install_vim_plugin(plugin)
 end
