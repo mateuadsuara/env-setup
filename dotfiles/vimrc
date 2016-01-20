@@ -106,6 +106,32 @@ nnoremap <space>gpl :Dispatch! git pull<CR>
 xnoremap dp :diffput<cr>
 xnoremap do :diffget<cr>
 
+" vim projectionist
+" -----------------------
+let g:projectionist_heuristics = { 
+     \ "Rakefile" : { 
+     \ "app/*.rb" : {"alternate": "spec/{}_spec.rb",
+     \               "type": "app"},
+     \ "lib/*.rb" : {"alternate": "spec/{}_spec.rb",
+     \               "type" : "lib"},
+     \ "spec/controllers/*_spec.rb" : {"alternate": "app/controllers/{}.rb",
+     \                                 "type": "cspec"},
+     \ "spec/*_spec.rb" : {"alternate": "lib/{}.rb",
+     \                     "type" : "spec"},
+     \ },
+     \ "src/main/java/" : { 
+     \ "src/main/java/*.java": {"alternate": "src/test/java/{}Test.java",
+     \                          "type": "src"},
+     \ "src/test/java/*Test.java": {"alternate": "src/main/java/{}.java",
+     \                          "type": "spec"},
+     \ },
+     \ "project.clj" : { 
+     \ "src/*.clj": {"alternate": "spec/{}_spec.clj",
+     \               "type": "src"},
+     \ "spec/*_spec.clj": {"alternate": "src/{}.clj",
+     \                     "type": "spec"}
+     \ }
+     \ }
 
 highlight link hspecDescribe Type
 highlight link hspecIt Identifier
