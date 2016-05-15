@@ -28,6 +28,7 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 " -----------------------
 nnoremap <C-W>" :vsp<CR>
 nnoremap <C-W>: :sp<CR>
+nnoremap <C-W>o <Nop>
 
 " Tab mapings
 " -----------------------
