@@ -20,6 +20,10 @@ set hlsearch
 set laststatus=2
 let mapleader = ","
 
+" Shortcuts
+" -----------------------
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
 " Window mapings
 " -----------------------
 nnoremap <C-W>" :vsp<CR>
