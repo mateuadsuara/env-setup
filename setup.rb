@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+base_path = ARGV[0] || '~'
+
 require 'fileutils'
 
 def symlink(relative_file, destination)
@@ -15,10 +17,10 @@ def working_dir
   File.expand_path(File.dirname(__FILE__))
 end
 
-def install_vim_plugin(git_repo)
+def install_vim_plugin(git_repo, base_path)
   IO.popen("git")
   repo_name = git_repo.split("/")[1]
-  system("git clone https://github.com/#{git_repo} ~/.vim/bundle/#{repo_name}")
+  system("git clone https://github.com/#{git_repo} #{base_path}/.vim/bundle/#{repo_name}")
   system('vim -u NONE -c "Helptags" -c q')
 end
 
@@ -26,13 +28,13 @@ def mkdir(dir)
   FileUtils.mkdir_p File.expand_path(dir)
 end
 
-mkdir("~/.tmp")
+mkdir("#{base_path}/.tmp")
 
-symlink("bin", "~/bin")
+symlink("bin", "#{base_path}/bin")
 
 Dir.glob("dotfiles/*").each do |file|
   filename = File.basename(file)
-  symlink(file, "~/.#{filename}")
+  symlink(file, "#{base_path}/.#{filename}")
 end
 
 [
@@ -55,5 +57,5 @@ end
   "lambdatoast/elm.vim.git",
   "tpope/vim-projectionist"
 ].each do |plugin|
-  install_vim_plugin(plugin)
+  install_vim_plugin(plugin, base_path)
 end
