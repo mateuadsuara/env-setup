@@ -1,0 +1,2 @@
+#!/bin/bash
+hexdump -v -e '/1 "%02X "' ${2:-/dev/stdin} | grep --byte-offset --only-matching "$1" | awk '/(\d*):/ { printf("%X\n",$0/3);}'
