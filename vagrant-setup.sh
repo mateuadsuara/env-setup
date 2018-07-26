@@ -13,3 +13,6 @@ cd /home/vagrant
 git clone https://github.com/mateuadsuara/env-setup.git /home/vagrant/env-setup
 cd /home/vagrant/env-setup
 ruby setup.rb /home/vagrant
+
+apt-get -y install python3-pip
+pip3 install termtosvg
