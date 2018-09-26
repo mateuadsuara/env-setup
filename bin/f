@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ -z "$2" ]
+then
+  DIR="."
+else
+  DIR="$2"
+fi
+
+clear; grep --color=always -nr "$1" "$DIR" | more
