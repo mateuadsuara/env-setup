@@ -1,0 +1,11 @@
+#!/bin/sh
+TRACKED_BRANCH=`git status -sb | head -n 1 | cut -d' ' -f2`
+if [ "$TRACKED_BRANCH" == "HEAD" ]; then
+  PREVIOUS_HEAD=`git rev-parse HEAD`
+else
+  PREVIOUS_HEAD=$TRACKED_BRANCH
+fi
+git checkout "$1" && git merge origin/$1 --ff-only
+if [ $? -ne 0 ]; then
+  git checkout $PREVIOUS_HEAD
+fi
