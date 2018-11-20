@@ -1,2 +1,24 @@
 #!/bin/sh
-git log --graph --all --pretty=format:'%C(magenta)%h%C(auto)%d %s %C(green)(%cr) %C(bold blue)%an%C(white)/%C(cyan)%cn'
+
+function diff {
+  RANGE=$1
+  git log --graph --pretty=format:'%C(magenta)%h%C(auto)%d %s %C(green)(%cr) %C(bold blue)%an%C(white)/%C(cyan)%cn' $RANGE
+}
+
+function log_all {
+  git log --graph --all --pretty=format:'%C(magenta)%h%C(auto)%d %s %C(green)(%cr) %C(bold blue)%an%C(white)/%C(cyan)%cn'
+}
+
+clear
+if [ -z "$1" ]
+then
+  log_all
+else
+  COMMITS=`sed "s/\.\./#/g" <<< "$1"`
+  START_COMMIT=$(cut -d'#' -f1 <<< "$COMMITS")
+  END_COMMIT=$(cut -d'#' -f2 <<< "$COMMITS")
+  COMMIT_RANGE="$START_COMMIT^1..$END_COMMIT"
+  COMMIT_RANGE_REVERSE="$END_COMMIT^1..$START_COMMIT"
+  diff $COMMIT_RANGE
+  diff $COMMIT_RANGE_REVERSE
+fi
