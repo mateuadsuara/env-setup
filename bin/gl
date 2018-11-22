@@ -2,12 +2,16 @@
 
 function diff {
   RANGE=$1
-  git log --graph --pretty=format:'%C(magenta)%h%C(auto)%d %s %C(green)(%cr) %C(bold blue)%an%C(white)/%C(cyan)%cn' $RANGE
+  git --no-pager log --graph --pretty=format:'%C(magenta)%h%C(auto)%d %s %C(green)(%cr) %C(bold blue)%an%C(white)/%C(cyan)%cn' $RANGE
+  tput sgr0
+  echo
 }
 
 function show_commit {
   COMMIT=$1
-  git log --graph -n 1 --pretty=format:'%C(magenta)%h%C(auto)%d %s %C(green)(%cr) %C(bold blue)%an%C(white)/%C(cyan)%cn' $COMMIT
+  git --no-pager log --graph -n 1 --pretty=format:'%C(magenta)%h%C(auto)%d %s %C(green)(%cr) %C(bold blue)%an%C(white)/%C(cyan)%cn' $COMMIT
+  tput sgr0
+  echo
 }
 
 function log_all {
