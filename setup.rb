@@ -54,7 +54,7 @@ end
   "airblade/vim-gitgutter.git",
   "tpope/vim-fugitive.git",
 
-  "lambdatoast/elm.vim.git",
+  "elmcast/elm-vim",
   "tpope/vim-projectionist"
 ].each do |plugin|
   install_vim_plugin(plugin, base_path)
