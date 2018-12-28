@@ -17,8 +17,10 @@ ruby setup.rb /home/vagrant
 apt-get -y install python3-pip
 pip3 install termtosvg
 
-curl -sL https://deb.nodesource.com/setup_11.x | bash -
-apt-get install -y nodejs
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+source ~/.bashrc
+nvm install 'lts/*'
 npm install -g elm
 npm install -g elm-test
 npm install -g elm-oracle
+npm install -g elm-format
