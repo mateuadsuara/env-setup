@@ -16,5 +16,3 @@ ruby setup.rb /home/vagrant
 
 apt-get -y install python3-pip
 pip3 install termtosvg
-
-chown -R vagrant:vagrant /home/vagrant
