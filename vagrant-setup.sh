@@ -11,6 +11,7 @@ git config --global user.name "Mateu Adsuara"
 GIT
 
 apt-get install -y ruby-full
+gem install bundler
 
 cd /home/vagrant
 git clone https://github.com/mateuadsuara/env-setup.git /home/vagrant/env-setup
