@@ -1,7 +1,9 @@
 add-apt-repository ppa:tmate.io/archive -y
 apt-get update
 apt-get install -y tmate
-ssh-keygen -f /home/vagrant/.ssh/id_rsa -N ''
+if [ ! -f  /home/vagrant/.ssh/id_rsa ]; then
+  ssh-keygen -f /home/vagrant/.ssh/id_rsa -N ''
+fi
 
 apt-get install -y git
 su vagrant <<'GIT'
