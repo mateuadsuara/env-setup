@@ -15,11 +15,6 @@ GIT
 apt-get install -y ruby-full
 gem install bundler
 
-cd /home/vagrant
-git clone https://github.com/mateuadsuara/env-setup.git /home/vagrant/env-setup
-cd /home/vagrant/env-setup
-ruby setup.rb /home/vagrant
-
 apt-get -y install python3-pip
 pip3 install termtosvg
 
@@ -34,3 +29,7 @@ npm install -g elm-test
 npm install -g elm-oracle
 npm install -g elm-format
 JAVASCRIPT
+
+git clone https://github.com/mateuadsuara/env-setup.git /home/vagrant/env-setup
+cd /home/vagrant/env-setup
+ruby setup.rb /home/vagrant
