@@ -18,7 +18,7 @@ gem install bundler
 apt-get -y install python3-pip
 pip3 install termtosvg
 
-su vagrant <<'JAVASCRIPT'
+su vagrant <<'ELM'
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -28,7 +28,7 @@ npm install -g elm
 npm install -g elm-test
 npm install -g elm-oracle
 npm install -g elm-format
-JAVASCRIPT
+ELM
 
 git clone https://github.com/mateuadsuara/env-setup.git /home/vagrant/env-setup
 cd /home/vagrant/env-setup
