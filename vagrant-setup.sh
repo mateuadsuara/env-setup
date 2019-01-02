@@ -30,6 +30,14 @@ npm install -g elm-oracle
 npm install -g elm-format
 ELM
 
+su vagrant <<'ELIXIR'
+wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && \
+sudo dpkg -i erlang-solutions_1.0_all.deb && \
+sudo apt-get update && \
+sudo apt-get install esl-erlang -y && \
+sudo apt-get install elixir -y
+ELIXIR
+
 git clone https://github.com/mateuadsuara/env-setup.git /home/vagrant/env-setup
 cd /home/vagrant/env-setup
 ruby setup.rb /home/vagrant
