@@ -4,7 +4,11 @@ apt-get install -y tmate
 ssh-keygen -f /home/vagrant/.ssh/id_rsa -N ''
 
 apt-get install -y git
+su vagrant <<'GIT'
 git config --global core.editor "vim"
+git config --global user.email "mateuadsuara@gmail.com"
+git config --global user.name "Mateu Adsuara"
+GIT
 
 apt-get install -y ruby-full
 
