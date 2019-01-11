@@ -7,4 +7,11 @@ else
   DIR="$2"
 fi
 
-clear; grep --color=always -nr "$1" "$DIR" | more
+if [ -z "$3" ]
+then
+  SURROUNDING_LINES_ARGS=""
+else
+  SURROUNDING_LINES_ARGS="-B $3 -A $3"
+fi
+
+clear; grep $SURROUNDING_LINES_ARGS --color=always -nr "$1" "$DIR" | more
