@@ -1,6 +1,12 @@
 export PATH="$PATH:~/bin"
 cdl() {
-  cd "$@" && pwd && ls -la
+  if [ ! -z "$@" ]
+  then
+    DIR="$@"
+  else
+    DIR="`pwd`"
+  fi
+  cd "$DIR" && pwd && ls -la
 }
 stty -ixon
 if [ -f ~/.bashrc ]; then
