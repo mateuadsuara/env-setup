@@ -1,5 +1,32 @@
 #!/bin/bash
 
+while getopts d:b:r:t: option
+do
+case "${option}"
+in
+d) DIFF=${OPTARG};;
+b) BRANCHES=${OPTARG};;
+r) REMOTES=${OPTARG};;
+esac
+done
+
+if [[ ! -z "$BRANCHES" ]]
+then
+  FILTERS="${FILTERS} --branches=*${BRANCHES}*"
+fi
+
+if [[ ! -z "$REMOTES" ]]
+then
+  FILTERS="${FILTERS} --remotes=*${REMOTES}*"
+fi
+
+if [ -z "$FILTERS" ]
+then
+  FILTERS=" --all"
+fi
+
+echo $FILTERS
+
 function diff {
   RANGE=$1
   git --no-pager log --graph --pretty=format:'%C(magenta)%h%C(auto)%d %C(white)%s %C(green)(%cr) %C(bold blue)%an%C(white)/%C(cyan)%cn' $RANGE
@@ -15,16 +42,16 @@ function show_commit {
 }
 
 function log_all {
-  git log --graph --all --pretty=format:'%C(magenta)%h%C(auto)%d %C(white)%s %C(green)(%cr) %C(bold blue)%an%C(white)/%C(cyan)%cn'
+  git log --graph $FILTERS --pretty=format:'%C(magenta)%h%C(auto)%d %C(white)%s %C(green)(%cr) %C(bold blue)%an%C(white)/%C(cyan)%cn'
 }
 
 clear
-if [ -z "$1" ]
+if [ -z "$DIFF" ]
 then
   log_all
 else
-  COMMIT_RANGE=$1
-  COMMITS=`sed "s/\.\./#/g" <<< "$1"`
+  COMMIT_RANGE=$DIFF
+  COMMITS=`sed "s/\.\./#/g" <<< "$DIFF"`
   START_COMMIT=$(cut -d'#' -f1 <<< "$COMMITS")
   diff $COMMIT_RANGE
   show_commit $START_COMMIT
