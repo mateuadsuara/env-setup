@@ -19,6 +19,9 @@ apt-get install -y build-essential #for http gem
 apt-get install -y zlib1g-dev #for nokogiri gem
 gem install bundler
 
+apt-get install -y openjdk-8-jdk
+apt-get install -y maven
+
 apt-get -y install python3-pip
 pip3 install termtosvg
 
