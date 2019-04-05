@@ -54,10 +54,11 @@ end
   "airblade/vim-gitgutter.git",
   "tpope/vim-fugitive.git",
 
+  "tpope/vim-projectionist",
+
   "elmcast/elm-vim",
   "elixir-lang/vim-elixir.git",
   "rust-lang/rust.vim",
-  "tpope/vim-projectionist"
 ].each do |plugin|
   install_vim_plugin(plugin, base_path)
 end
