@@ -13,6 +13,10 @@ export PATH="$PATH:$HOME/.rbenv/bin"
 if which rbenv > /dev/null; then
   eval "$(rbenv init -)"
 fi
+export PATH="$PATH:$HOME/.nodenv/bin"
+if which nodenv > /dev/null; then
+  eval "$(nodenv init -)"
+fi
 stty -ixon
 if [ -f ~/.bashrc ]; then
    source ~/.bashrc
