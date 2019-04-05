@@ -12,7 +12,11 @@ git config --global user.email "mateuadsuara@gmail.com"
 git config --global user.name "Mateu Adsuara"
 GIT
 
+apt-get install -y postgresql postgresql-contrib libpq-dev #for pg gem
+
 apt-get install -y ruby-full
+apt-get install -y build-essential #for http gem
+apt-get install -y zlib1g-dev #for nokogiri gem
 gem install bundler
 
 apt-get -y install python3-pip
