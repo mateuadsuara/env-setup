@@ -9,8 +9,8 @@ cdl() {
   fi
   cd "$DIR" && pwd && ls -la
 }
+export PATH="$PATH:$HOME/.rbenv/bin"
 if which rbenv > /dev/null; then
-  export PATH="$PATH:$HOME/.rbenv/bin"
   eval "$(rbenv init -)"
 fi
 stty -ixon
