@@ -14,4 +14,4 @@ else
   SURROUNDING_LINES_ARGS="-B $3 -A $3"
 fi
 
-clear; grep $SURROUNDING_LINES_ARGS --color=always -nr "$1" "$DIR" | more
+grep $SURROUNDING_LINES_ARGS --color=always -nr "$1" "$DIR"
