@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+
+require 'fileutils'
+
+available_keys = Dir[File.expand_path('~/.ssh/*.pub')]
+  .map do |path|
+    File.basename(path)
+  end
+  .reject do |path|
+    path == 'id_rsa.pub'
+  end
+pubkey = File.expand_path("~/.ssh/id_rsa.pub")
+
+arg = ARGV[0]
+
+if arg == "ls"
+  puts available_keys.join("\n")
+  exit 0
+end
+
+if arg == "."
+  puts File.read(pubkey)
+  exit 0
+end
+
+pubkey_name = arg
+if !pubkey_name || !available_keys.include?(pubkey_name)
+  raise "Please specify the ssh key name to use, available ones are:\n" + available_keys.join("\n")
+end
+
+puts "Previous key:\n" + File.read(pubkey) + "\n"
+
+pubkey_path = File.expand_path("~/.ssh/#{pubkey_name}")
+puts "Copy #{pubkey_path} to #{pubkey}"
+FileUtils.cp(pubkey_path, pubkey)
+
+privkey = File.expand_path("~/.ssh/id_rsa")
+privkey_path = File.expand_path("~/.ssh/#{File.basename(pubkey_path, ".*")}")
+puts "Copy #{privkey_path} to #{privkey}"
+FileUtils.cp(privkey_path, privkey)
