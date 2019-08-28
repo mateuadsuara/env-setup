@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+filename = ARGV[0]
+raise "Please specify the json file to prettify" unless filename
+
+require 'json'
+puts JSON.pretty_generate(JSON.parse(File.read(filename)))
