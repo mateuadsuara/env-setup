@@ -60,6 +60,7 @@ end
   "elixir-lang/vim-elixir.git",
   "rust-lang/rust.vim",
   "leafgarland/typescript-vim.git",
+  "peitalin/vim-jsx-typescript.git",
 ].each do |plugin|
   install_vim_plugin(plugin, base_path)
 end
