@@ -9,7 +9,13 @@ def symlink(relative_file, destination)
 
   sym_link = File.expand_path(destination)
 
-  FileUtils.rm sym_link if File.symlink?(sym_link) || File.exist?(sym_link)
+  if File.exist?(sym_link)
+    if File.symlink?(sym_link)
+      FileUtils.rm sym_link
+    else
+      raise "#{sym_link} exists and is not a symlink! Cannot delete it to create the symlink assuming it will be fine :("
+    end
+  end
   FileUtils.ln_s filepath, sym_link
 end
 
@@ -29,8 +35,12 @@ def mkdir(dir)
 end
 
 mkdir("#{base_path}/.tmp")
+mkdir("#{base_path}/bin")
 
-symlink("bin", "#{base_path}/bin")
+Dir.glob("bin/*").each do |file|
+  filename = File.basename(file)
+  symlink(file, "#{base_path}/bin/#{filename}")
+end
 
 Dir.glob("dotfiles/*").each do |file|
   filename = File.basename(file)
