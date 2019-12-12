@@ -86,7 +86,7 @@ let g:gitgutter_eager = 1
 
 " Fugitive
 " -----------------------
-set diffopt+=vertical
+" set diffopt+=vertical
 
 " Fugitive git bindings
 " -----------------------
