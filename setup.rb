@@ -34,6 +34,12 @@ def mkdir(dir)
   FileUtils.mkdir_p File.expand_path(dir)
 end
 
+def install_tldr(base_path)
+  system("curl -o #{base_path}/bin/tldr https://raw.githubusercontent.com/raylee/tldr/master/tldr")
+  system("chmod +x #{base_path}/bin/tldr")
+  system("tldr -c")
+end
+
 mkdir("#{base_path}/.tmp")
 mkdir("#{base_path}/bin")
 
@@ -41,6 +47,7 @@ Dir.glob("bin/*").each do |file|
   filename = File.basename(file)
   symlink(file, "#{base_path}/bin/#{filename}")
 end
+install_tldr(base_path)
 
 Dir.glob("dotfiles/*").each do |file|
   filename = File.basename(file)

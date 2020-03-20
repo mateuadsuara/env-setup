@@ -8,3 +8,8 @@ export PATH="$PATH:$HOME/.nodenv/bin"
 if which nodenv > /dev/null; then
   eval "$(nodenv init -)"
 fi
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+if which tldr > /dev/null; then
+  complete -W "$(tldr 2>/dev/null --list)" tldr
+fi
