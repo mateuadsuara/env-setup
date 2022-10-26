@@ -12,7 +12,7 @@ GetModificationFootprint() {
 
 while true
 do
-  ATIME=`GetModificationFootprint "$1"`
+  ATIME=`GetModificationFootprint "$1" | tr -d '\0'`
 
   if [[ "$ATIME" != "$LTIME" ]]
   then
