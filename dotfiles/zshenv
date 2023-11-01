@@ -2,7 +2,7 @@ export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.rbenv/bin"
 if which rbenv > /dev/null; then
-  eval "$(rbenv init -)"
+  eval "$(rbenv init - zsh)"
 fi
 export PATH="$PATH:$HOME/.nodenv/bin"
 if which nodenv > /dev/null; then
