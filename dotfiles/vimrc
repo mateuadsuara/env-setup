@@ -41,6 +41,10 @@ nnoremap <C-W>3 3gt
 nnoremap <C-W>4 4gt
 nnoremap <C-W>5 5gt
 
+" Escape alternative
+" -----------------------
+inoremap <C-[> <ESC>
+
 " Colors
 " -----------------------
 colorscheme railscasts
